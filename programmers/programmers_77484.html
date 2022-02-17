@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 로또의 최고 순위와 최저 순위 -->
+    <script>
+        function Rank(Num) {
+            let rank = 0;
+            if (Num === 6)
+                rank = 1;
+            else if (Num === 5)
+                rank = 2;
+            else if (Num === 4)
+                rank = 3;
+            else if (Num === 3)
+                rank = 4;
+            else if (Num === 2)
+                rank = 5;
+            else if (Num < 2)
+                rank = 6;
+            return rank;
+        }
+
+        function checkSameNum(lotto, win_nums) {
+            for (let win_num of win_nums) {
+                if (lotto === win_num) {
+                    correctNum++
+                }
+            }
+        }
+
+        let lottos = [44, 1, 0, 0, 31, 25];
+        let win_nums = [31, 10, 45, 1, 6, 19];
+        let zeroNum = 0;
+        let correctNum = 0;
+        let minRank = 0;
+        let maxRank = 0;
+
+        let answer = [];
+
+        for (let lotto of lottos) {
+            if (lotto === 0) {
+                zeroNum++;
+            }
+            else {
+                checkSameNum(lotto, win_nums);
+            }
+        }
+
+        maxRank = Rank(zeroNum + correctNum);
+        minRank = Rank(correctNum)
+
+        answer.push(maxRank);
+        answer.push(minRank);
+
+        console.log(answer);
+    </script>
+</body>
+
+</html>
